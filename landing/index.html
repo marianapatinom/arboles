@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iris ID3 Project Builder - Ecosistema de Machine Learning</title>
+  <meta name="description" content="Plataforma profesional e interactiva de clasificación botánica basada en el algoritmo de Árbol de Decisión ID3 y el ciclo CRISP-ML." />
+
+  <!-- Script Autocorrector de Rutas de Imágenes Local / Doble Click -->
+  <script>
+    function fixImagePath(img) {
+      let attempt = parseInt(img.getAttribute('data-attempt') || '0');
+      attempt++;
+      img.setAttribute('data-attempt', attempt);
+      
+      const currentSrc = img.src || img.getAttribute('src');
+      if (!currentSrc) return;
+      
+      // Extrae el nombre de archivo final
+      const parts = currentSrc.split('/');
+      let filename = parts[parts.length - 1];
+      
+      // Decodifica caracteres especiales como espacios
+      try {
+        filename = decodeURIComponent(filename);
+      } catch(e) {
+        console.error(e);
+      }
+      
+      if (attempt === 1) {
+        // Intento 1: Ruta literal con tilde y espacios en blanco
+        img.src = '../Imágenes/' + filename;
+      } else if (attempt === 2) {
+        // Intento 2: Codificación UTF-8 para "../Imágenes/"
+        img.src = '../Im%C3%A1genes/' + filename;
+      } else if (attempt === 3) {
+        // Intento 3: Carpeta sin tilde "../Imagenes/"
+        img.src = '../Imagenes/' + filename;
+      } else if (attempt === 4) {
+        // Intento 4: Carpeta en minúscula y sin tilde "../imagenes/"
+        img.src = '../imagenes/' + filename;
+      } else if (attempt === 5) {
+        // Intento 5: Directamente en la raíz de imágenes o local
+        img.src = filename;
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  
+  <!-- Barra de Navegación Lateral (Sidebar) -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-emoji">🌸</span>
+      <h2>Iris ID3</h2>
+      <p>Ecosistema de ML</p>
+    </div>
+    <nav class="nav-menu">
+      <a href="#hero" class="nav-link active"><span>Inicio</span></a>
+      <a href="#crisp-ml" class="nav-link"><span>Ciclo CRISP-ML</span></a>
+      <a href="#dataset" class="nav-link"><span>Dataset & EDA</span></a>
+      <a href="#model" class="nav-link"><span>Árbol ID3</span></a>
+      <a href="#results" class="nav-link"><span>Resultados</span></a>
+      <a href="#app" class="nav-link"><span>App Interactiva</span></a>
+    </nav>
+    <div class="sidebar-footer">
+      <p>© 2026 Ecosistema IA</p>
+    </div>
+  </aside>
+
+  <!-- Contenedor Principal de Contenido -->
+  <main class="content-wrapper">
+    
+    <!-- SECCIÓN 1: HERO (Presentación Principal) -->
+    <section id="hero" class="hero-section">
+      <div class="glow-bg"></div>
+      <div class="hero-content">
+        <span class="badge">Ecosistema Profesional Completo</span>
+        <h1>Árbol de Decisión <span>ID3</span> aplicado al Dataset Iris</h1>
+        <p>Transformación integral de un modelo científico interactivo en una plataforma botánica empresarial. Lógica interpretable, documentación académica en Word y despliegue ágil estructurado bajo la metodología CRISP-ML.</p>
+        
+        <!-- BANNER DE INFOGRAFÍA DE APOYO BOTÁNICO -->
+        <div class="hero-banner-container">
+          <img src="../Imágenes/Infog.png" onerror="fixImagePath(this)" alt="Visualización Anatómica del Género Iris" />
+          <div class="hero-banner-overlay">
+            <h3>Visualización Anatómica del Género Iris</h3>
+            <p>Especies de estudio clásico: Iris-setosa, Iris-versicolor e Iris-virginica representadas según sus variaciones de pétalo y sépalo.</p>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#app" class="btn btn-primary">Ejecutar Streamlit</a>
+          <a href="#crisp-ml" class="btn btn-secondary">Ver Metodología</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: CICLO CRISP-ML (Timeline Metodológico) -->
+    <section id="crisp-ml" class="section-card">
+      <div class="section-header">
+        <span class="section-badge">Metodología</span>
+        <h2>Ciclo de Vida del Proyecto: CRISP-ML</h2>
+        <p>Garantía de calidad técnica y organizativa a lo largo de las 7 etapas del ciclo de vida del modelo de Machine Learning.</p>
+      </div>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-num">1</div>
+          <div class="timeline-content">
+            <h3>Comprensión del Negocio y Problema</h3>
+            <p>Automatizar la catalogación botánica reduciendo tiempos de clasificación manual en un 90% con fiabilidad superior al 95%, garantizando interpretabilidad mediante un árbol de decisión explicable ("caja blanca").</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-num">2</div>
+          <div class="timeline-content">
+            <h3>Comprensión de los Datos</h3>
+            <p>Análisis de las 150 muestras balanceadas de flores de Iris (Setosa, Versicolor, Virginica) recolectadas por Ronald Fisher, con 4 descriptores continuos sin valores nulos.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-num">3</div>
+          <div class="timeline-content">
+            <h3>Preparación de los Datos</h3>
+            <p>Extracción limpia de características y separación reproducible en proporción 80% entrenamiento (120 muestras) y 20% evaluación (30 muestras) usando <code>random_state=1</code>.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-num">4</div>
+          <div class="timeline-content">
+            <h3>Modelado</h3>
+            <p>Entrenamiento del modelo <code>DecisionTreeClassifier</code> con criterio de entropía para emular al algoritmo clásico ID3, optimizando la Ganancia de Información para obtener reglas lógicas óptimas.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-num">5</div>
+          <div class="timeline-content">
+            <h3>Evaluación Científica</h3>
+            <p>Pruebas estadísticas en el conjunto de prueba con una exactitud final del 96.67%. Identificación y desglose clínico de la única muestra de error cruzado.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-num">6</div>
+          <div class="timeline-content">
+            <h3>Despliegue y Landing Page</h3>
+            <p>Implementación del dashboard analítico en tiempo real en Streamlit (<code>app.py</code>) y del portal web de difusión corporativa para democratizar el uso del modelo.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-num">7</div>
+          <div class="timeline-content">
+            <h3>Monitoreo y Mantenimiento</h3>
+            <p>Propuesta de detección activa de desviación de datos (Data Drift) y flujos de reentrenamiento periódico (Human-in-the-loop) para asegurar la precisión del modelo a largo plazo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: DATASET & EDA -->
+    <section id="dataset" class="section-card">
+      <div class="section-header">
+        <span class="section-badge">Datos</span>
+        <h2>Conjunto de Datos y Análisis Exploratorio</h2>
+        <p>Exploración estadística del comportamiento morfológico de las características físicas de las flores.</p>
+      </div>
+      
+      <div class="grid-2col">
+        <div class="grid-card">
+          <h3>Estructura Anatómica del Dataset</h3>
+          <p>Las 4 características representan dimensiones físicas continuas. El perfecto balance de clases (50 muestras por especie) evita sesgos en el entrenamiento.</p>
+          
+          <table class="premium-table">
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th>Media (cm)</th>
+                <th>Rango (cm)</th>
+                <th>Separabilidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Largo del Sépalo</td>
+                <td>5.84</td>
+                <td>4.30 - 7.90</td>
+                <td>Solapamiento general</td>
+              </tr>
+              <tr>
+                <td>Ancho del Sépalo</td>
+                <td>3.05</td>
+                <td>2.00 - 4.40</td>
+                <td>Solapamiento general</td>
+              </tr>
+              <tr>
+                <td>Largo del Pétalo</td>
+                <td>3.76</td>
+                <td>1.00 - 6.90</td>
+                <td>Alta separabilidad</td>
+              </tr>
+              <tr>
+                <td>Ancho del Pétalo</td>
+                <td>1.20</td>
+                <td>0.10 - 2.50</td>
+                <td>Separabilidad extrema</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="grid-card img-card">
+          <img src="../Imágenes/GraficoBarras.png" onerror="fixImagePath(this)" alt="Distribución de Clases del Dataset Iris" class="hover-zoom" />
+          <p class="caption">Distribución perfectamente equilibrada del dataset, ideal para evitar sesgos algorítmicos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: MODELADO (ÁRBOL ID3) -->
+    <section id="model" class="section-card">
+      <div class="section-header">
+        <span class="section-badge">Modelo</span>
+        <h2>El Corazón de la Lógica: Árbol de Decisión ID3</h2>
+        <p>Extracción transparente de reglas jerárquicas lógicas para la toma de decisiones basada en Entropía.</p>
+      </div>
+      
+      <div class="grid-2col">
+        <div class="grid-card img-card">
+          <img src="../Imágenes/VisualizaacionArbol.png" onerror="fixImagePath(this)" alt="Visualización del Árbol de Decisión entrenado" class="hover-zoom" />
+          <p class="caption">Árbol de decisión aprendido por el algoritmo. Se observan hojas puras con entropía de cero.</p>
+        </div>
+        
+        <div class="grid-card">
+          <h3>Reglas Lógicas de Decisión Aprendidas</h3>
+          <p>El árbol de decisión entrena umbrales de forma iterativa buscando la máxima reducción del desorden. Las reglas derivadas de la estructura entrenada son:</p>
+          
+          <ul class="styled-list">
+            <li><strong>Clasificación de Setosa:</strong> Si el ancho del pétalo (<code>petalwidth</code>) es menor o igual a 0.8 cm, la flor es clasificada inequívocamente como <strong>Iris-setosa</strong>.</li>
+            <li><strong>Zona de Transición:</strong> Si el ancho del pétalo es mayor a 0.8 cm y menor o igual a 1.75 cm, la muestra pertenece mayoritariamente a <strong>Iris-versicolor</strong>.</li>
+            <li><strong>Clasificación de Virginica:</strong> Aquellas muestras con ancho de pétalo superior a 1.75 cm son clasificadas de forma contundente como <strong>Iris-virginica</strong>.</li>
+          </ul>
+          
+          <div class="math-box">
+            <p><strong>Fórmula de Entropía de Shannon:</strong></p>
+            <code>H(S) = - ∑ (p_i * log2(p_i))</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: RESULTADOS -->
+    <section id="results" class="section-card">
+      <div class="section-header">
+        <span class="section-badge">Métricas</span>
+        <h2>Rendimiento Científico de Élite</h2>
+        <p>Evaluación objetiva del modelo frente a datos de prueba no observados durante el entrenamiento.</p>
+      </div>
+      
+      <!-- Bloque de KPIs Animados -->
+      <div class="kpi-container">
+        <div class="kpi-card">
+          <div class="kpi-num" id="kpi-accuracy">0%</div>
+          <div class="kpi-label">Exactitud (Accuracy)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num" id="kpi-aciertos">0</div>
+          <div class="kpi-label">Muestras Correctas</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-num" id="kpi-f1">0%</div>
+          <div class="kpi-label">F1-Score Promedio</div>
+        </div>
+      </div>
+      
+      <div class="grid-2col">
+        <div class="grid-card">
+          <h3>Análisis Clínico de la Matriz de Confusión</h3>
+          <p>El modelo clasifica a la perfección todas las instancias de <strong>Setosa</strong> y <strong>Virginica</strong> en el conjunto de prueba. Existe un único error de predicción donde un ejemplar real de <strong>Iris-versicolor</strong> es clasificado como <strong>Virginica</strong>.</p>
+          
+          <div class="diagnostic-box">
+            <h4>Diagnóstico de la Falla:</h4>
+            <p>La muestra correspondiente al índice 77 poseía un ancho de pétalo de 1.8 cm, cruzando el límite aprendido por el modelo de 1.75 cm. Esto se asocia al solapamiento morfológico natural que existe entre las especies maduras, validando que el modelo es sensible a la variación anatómica real.</p>
+          </div>
+        </div>
+        
+        <div class="grid-card img-card">
+          <img src="../Imágenes/MatrizConfusion.png" onerror="fixImagePath(this)" alt="Matriz de Confusión del Conjunto de Prueba" class="hover-zoom" />
+          <p class="caption">Matriz de confusión científica obtenida directamente del notebook original.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 6: INTEGRACIÓN CON APP (STREAMLIT) -->
+    <section id="app" class="section-card highlight-card">
+      <div class="section-header">
+        <span class="section-badge">Despliegue</span>
+        <h2>Entorno de Producción e Interacción</h2>
+        <p>Pruebe las predicciones en tiempo real y experimente con las variables mediante nuestro dashboard interactivo en Streamlit.</p>
+      </div>
+      
+      <div class="app-integration">
+        <div class="app-steps">
+          <h3>Cómo iniciar el dashboard localmente:</h3>
+          <ol class="step-list">
+            <li>
+              <span class="step-badge">1</span>
+              <div>
+                <strong>Instalar dependencias</strong>
+                <p>Abra una consola de comandos en el directorio del proyecto y ejecute: <code>pip install -r requirements.txt</code></p>
+              </div>
+            </li>
+            <li>
+              <span class="step-badge">2</span>
+              <div>
+                <strong>Ejecutar el servidor local</strong>
+                <p>Lance la aplicación web de Streamlit con el comando: <code>streamlit run app.py</code></p>
+              </div>
+            </li>
+            <li>
+              <span class="step-badge">3</span>
+              <div>
+                <strong>Disfrute de la experiencia</strong>
+                <p>Se abrirá su navegador web predeterminado en la URL local donde podrá realizar predicciones en tiempo real y visualizar los gráficos.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        
+        <div class="app-cta-box">
+          <span class="logo-emoji huge">🚀</span>
+          <h3>Dashboard Interactivo</h3>
+          <p>Formulario interactivo, visualización de árboles en tiempo real, importancia de variables y explicación gráfica espacial.</p>
+          <a class="btn btn-primary" href="../app.py">Abrir Código app.py</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

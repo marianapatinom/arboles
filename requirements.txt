@@ -1,0 +1,22 @@
+# ==============================================================================
+# REQUERIMIENTOS PARA DESPLIEGUE EN STREAMLIT CLOUD Y LOCAL
+# ==============================================================================
+# Este archivo contiene las dependencias necesarias para ejecutar la aplicación 
+# interactiva 'app.py' y los scripts del ecosistema botánico Iris ID3.
+
+# Motor principal y widgets interactivos de la interfaz web
+streamlit
+
+# Manipulación de estructuras de datos continuos y matrices numéricas
+pandas
+numpy
+
+# Modelado supervisado de Inteligencia Artificial (Algoritmo Árbol ID3)
+scikit-learn
+
+# Visualizaciones científicas y gráficos interactivos (densidades, boxplots, pairplots)
+matplotlib
+seaborn
+
+# Generación y manipulación estructurada de la memoria técnica en Word
+python-docx
